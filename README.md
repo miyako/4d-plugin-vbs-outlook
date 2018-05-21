@@ -10,7 +10,7 @@ Since Office 2013/2016, Outlook [automation](https://support.microsoft.com/en-us
 reg copy HKLM\SOFTWARE\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Classes\Wow6432Node\CLSID\{4E3A7680-B77A-11D0-9DA5-00C04FD65685} HKLM\SOFTWARE\Classes\Wow6432Node\CLSID\{4E3A7680-B77A-11D0-9DA5-00C04FD65685} /s /f
 ```
 
-**Note**: must run as Administrator. Compared to the blog post, the ``15.0`` path component is missing with Office 2016. In any case, ``CoCreateInstance`` fails to load the interface. ``LoadLibraryEx`` fails too, but it doesn't crash. Infact, the registry hack is necessary to make [mfcmapi](https://github.com/stephenegriffin/mfcmapi)work with Office Click-To-Run.
+**Note**: must run as Administrator. Compared to the blog post, the ``15.0`` path component is missing with Office 2016. In any case, ``CoCreateInstance`` fails to load the interface. ``LoadLibraryEx`` fails too, but it doesn't crash. Infact, the registry hack is necessary to make [mfcmapi](https://github.com/stephenegriffin/mfcmapi) work with Office Click-To-Run.
 
 ### VBA to export selected messages
 
