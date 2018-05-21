@@ -34,7 +34,8 @@ If Err.Number = 0 Then
 		Set selObject = objSelection.Item(i)
 		exportPath = exportFolderPath & i & ".msg"
 		'WScript.StdOut.Write selObject.Body
-		selObject.SaveAs exportPath, 9
+		selObject.SaveAs exportPath, 9 'olMSGUnicode
+		'https://msdn.microsoft.com/en-us/VBA/Outlook-VBA/articles/olsaveastype-enumeration-outlook
 	Next
 
 	Set objSelection = Nothing
