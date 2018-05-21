@@ -10,7 +10,7 @@ Since Office 2013/2016, Outlook automation has become very difficult. Click-To-R
 reg copy HKLM\SOFTWARE\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Classes\Wow6432Node\CLSID\{4E3A7680-B77A-11D0-9DA5-00C04FD65685} HKLM\SOFTWARE\Classes\Wow6432Node\CLSID\{4E3A7680-B77A-11D0-9DA5-00C04FD65685} /s /f
 ```
 
-**Note**: must run as Administrator. Compared to the blog post, the ``15.0`` path component is missing with Office 2016. In any case, code crashes with ``CoCreateInstance`` (same error with ``LoadLibraryEx``, although the latter doesn't crash). 
+**Note**: must run as Administrator. Compared to the blog post, the ``15.0`` path component is missing with Office 2016. In any case, code crashes with ``CoCreateInstance`` (same error with ``LoadLibraryEx``, although the latter doesn't crash). It seems the only way to automate Outlook is to use [add-ons](https://msdn.microsoft.com/en-us/library/jj900714.aspx#Automating%20Outlook%20by%20in-process%20vs.%20out-of-process%20Solutions).
 
 ### VBA to export selected messages
 
