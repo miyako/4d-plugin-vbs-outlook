@@ -56,3 +56,5 @@ If Err.Number = 0 Then
 
 End If
 ```
+
+[MailItem.SaveAs](https://msdn.microsoft.com/en-us/vba/outlook-vba/articles/mailitem-saveas-method-outlook)
