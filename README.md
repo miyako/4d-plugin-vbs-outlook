@@ -15,7 +15,7 @@ reg copy HKLM\SOFTWARE\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Cla
 
 * References
 
-[Outlook Item (.msg) File Format](https://msdn.microsoft.com/en-us/library/cc463912%28v=exchg.80%29.aspx?f=255&MSPPError=-2147217396)
+[Outlook Item ``.msg`` File Format](https://msdn.microsoft.com/en-us/library/cc463912%28v=exchg.80%29.aspx?f=255&MSPPError=-2147217396)
 
 ### VBA to export selected messages
 
