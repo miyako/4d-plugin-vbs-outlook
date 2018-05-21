@@ -38,7 +38,7 @@ If Err.Number = 0 Then
 	Next
 
 	Set selObjects = Nothing
-
+	Set objArgs = Nothing
 	Set objShell = Nothing
 	Set objFSO = Nothing
 	Set objOutlook = Nothing
