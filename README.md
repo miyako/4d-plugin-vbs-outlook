@@ -13,6 +13,10 @@ reg copy HKLM\SOFTWARE\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Cla
 
 **Note**: Must run as Administrator. Both lines are necessary. Compared to the blog post, the ``15.0`` path component is missing with Office 2016. In any case, ``CoCreateInstance`` fails to load the interface. COM automation is not possible. ``LoadLibraryEx`` called on the principal DLL fails too, but doesn't crash. In fact, the registry hack is necessary to make [mfcmapi](https://github.com/stephenegriffin/mfcmapi) work with Office Click-To-Run.
 
+* References
+
+[MSG specification](https://msdn.microsoft.com/en-us/library/cc463912%28v=exchg.80%29.aspx?f=255&MSPPError=-2147217396)
+
 ### VBA to export selected messages
 
 ```vba
