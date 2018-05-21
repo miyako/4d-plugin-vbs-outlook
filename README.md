@@ -16,6 +16,7 @@ There is a [hack to register the class in the namespace visible to COM](https://
 ``Outlook``  
 ``PowerPoint``  
 
+Is this [Virtualization](https://msdn.microsoft.com/en-us/library/windows/desktop/aa965884(v=vs.85).aspx)?
 
 ### VBA to export selected messages
 
