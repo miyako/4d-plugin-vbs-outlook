@@ -2,7 +2,20 @@
 
 Experimental
 
-Since Office 2013/2016, Outlook automation has become very difficult. Click-To-Run (a.k.a. C2R) deployment means Outlook no longer exposes interfaces such as [``IConverterSession``](https://msdn.microsoft.com/en-us/library/office/ff960231.aspx) to COM. This one was useful to convert MAPI (``msg``) to MIME (``eml``). Microsoft has decided not to exposes interoperability classes in the common namespace but rather insulate them in their virtual namespace ([bubble](https://blogs.msdn.microsoft.com/stephen_griffin/2014/04/21/outlook-2013-click-to-run-and-com-interfaces/)).
+Since Office 2013/2016, Outlook automation has become very difficult. Click-To-Run (a.k.a. C2R) deployment means Outlook no longer exposes interfaces such as [``IConverterSession``](https://msdn.microsoft.com/en-us/library/office/ff960231.aspx) to COM. This one was useful to convert MAPI (``msg``) to MIME (``eml``). Microsoft has decided not to exposes interoperability classes in the common namespace but rather insulate them in their virtual namespace ("bubble").
+
+
+There is a [hack to register the class in the com namespace](https://blogs.msdn.microsoft.com/stephen_griffin/2014/04/21/outlook-2013-click-to-run-and-com-interfaces/). However, ``RegOpenKeyEx`` only goes as deep as ``SOFTWARE\Microsoft\Office`` and does not seem to give access to ``ClickToRun`` (only the following sub-keys are visible).
+
+``15.0``  
+``16.0``  
+``Common``  
+``Delivery``  
+``Excel``  
+``MS Project``  
+``Outlook``  
+``PowerPoint``  
+
 
 ### VBA to export selected messages
 
