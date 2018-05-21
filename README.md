@@ -28,16 +28,16 @@ If Err.Number = 0 Then
 		exportFolderPath = objFSO.CreateFolder(exportFolderPath).Path
 	End If
 
-	Set selObjects = objOutlook.ActiveExplorer().Selection
+	Set objSelection = objOutlook.ActiveExplorer().Selection
 
-	For i = 1 To selObjects.Count
-		Set selObject = selObjects.Item(i)
+	For i = 1 To objSelection.Count
+		Set selObject = objSelection.Item(i)
 		exportPath = exportFolderPath & i & ".msg"
 		'WScript.StdOut.Write selObject.Body
 		selObject.SaveAs exportPath, 9
 	Next
 
-	Set selObjects = Nothing
+	Set objSelection = Nothing
 	Set objArgs = Nothing
 	Set objShell = Nothing
 	Set objFSO = Nothing
