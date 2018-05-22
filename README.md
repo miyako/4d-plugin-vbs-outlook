@@ -23,7 +23,7 @@ reg copy HKLM\SOFTWARE\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Cla
 
 #### In short
 
-One can no longer use the built-in feature of Outlook (``IConverterSession``) to export messages in ``eml`` format.
+One can no longer depend on Outlook (``IConverterSession``) to export messages in ``eml`` format from an external process.
 
 ### VBA to export selected messages
 
