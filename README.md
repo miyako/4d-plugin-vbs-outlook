@@ -21,6 +21,10 @@ reg copy HKLM\SOFTWARE\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Cla
 
 ``CoLoadLibrary`` crash (unless used after ``LoadLibraryEx``)   
 
+#### In short
+
+One can no longer use the built-in feature of Outlook (``IConverterSession``) to export messages in ``eml`` format.
+
 ### VBA to export selected messages
 
 ```vba
