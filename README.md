@@ -17,7 +17,7 @@ reg copy HKLM\SOFTWARE\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Cla
 
 ``CoCreateInstance`` crash.  
 
-``LoadLibraryEx`` module not found (no crash) with ``DONT_RESOLVE_DLL_REFERENCES``. otherwise crash.  
+``LoadLibraryEx`` module not found (no crash) with ``DONT_RESOLVE_DLL_REFERENCES``. Otherwise crash.  
 
 ``CoLoadLibrary`` crash (unless used after ``LoadLibraryEx``)   
 
