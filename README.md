@@ -24,7 +24,7 @@ reg copy HKLM\SOFTWARE\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Cla
 #### Alternative methods to convert MAPI to MIME
 
 To parse ``msg``files  without Outlook we could look into [libgsf](https://github.com/GNOME/libgsf) or [COM](https://msdn.microsoft.com/en-us/library/aa380369%28VS.85%29.aspx) based on the specification of 
-[Outlook Item File Format](https://msdn.microsoft.com/en-us/library/cc463912%28v=exchg.80%29.aspx?f=255&MSPPError=-2147217396). Once contents are retrieved from the structured file, RTF needs to be converted to HTML. Although there are numerous libraries designed to do this in [Python](https://github.com/JoshData/convert-outlook-msg-file), [Perl](https://github.com/craig552uk/MSG-Convert) [Perl](https://github.com/mvz/msgconvert), [ruby](https://github.com/aquasync/ruby-msg), [C#](https://github.com/Sicos1977/MSGReader), they all seem to be quite limited in feature (extract plain text only, for instance).
+[Outlook Item File Format](https://msdn.microsoft.com/en-us/library/cc463912%28v=exchg.80%29.aspx?f=255&MSPPError=-2147217396). Once contents are retrieved from the structured file, RTF needs to be converted to HTML. There are numerous libraries designed to do this in [Python](https://github.com/JoshData/convert-outlook-msg-file), [Perl](https://github.com/craig552uk/MSG-Convert) [Perl](https://github.com/mvz/msgconvert), [ruby](https://github.com/aquasync/ruby-msg), [C#](https://github.com/Sicos1977/MSGReader), but they all seem to be quite limited in feature (extract plain text only, for instance).
 
 ####  MAPI to MIME is probably the wrong way
 
