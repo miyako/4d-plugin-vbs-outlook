@@ -34,7 +34,9 @@ To parse ``msg``files  without Outlook we could look into [libgsf](https://githu
 
 As discussed [here](https://blogs.msdn.microsoft.com/stephen_griffin/2008/01/08/no-msg-for-you/), there is a fundamental problem in that ``msg`` is  a faithful copy of the original email and it **should not be used as an archive**. However way Outlook exports a message, they do not represent the original email. Since critical pieces of information are missing in ``msg`` it is simply not possible to "convert" ``msg`` to ``eml``.
 
-### VBA to export selected messages
+Since ``msg`` is a reduced and altered representation of the original email, there is no real incentive in trying to convert ``msg`` to `eml``. We might as well let Outlook to export ([MailItem.SaveAs](https://msdn.microsoft.com/en-us/vba/outlook-vba/articles/mailitem-saveas-method-outlook)) the message in ``MHT` format. The content is of course not the same as the original, but no less so than ``msg``, it will contain all the attachments and [``MIME``](https://en.wikipedia.org/wiki/MIME) is easier to parse than [``CFBF``](https://en.wikipedia.org/wiki/Compound_File_Binary_Format).
+
+#### VBA to export selected messages
 
 ```vba
 CRLF = Chr(13) & Chr(10)
