@@ -23,7 +23,14 @@ reg copy HKLM\SOFTWARE\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Cla
 
 #### In short
 
-Since Office 2013/2016, the (``IConverterSession``) interface is no longer exposed to COM. One can no longer use it to convert ``msg`` to ``eml``, without editing the registry. 
+Since Office 2013/2016, the ``IConverterSession`` interface is no longer exposed to COM. One can no longer use it to convert ``msg`` to ``eml``, without editing the registry.
+
+#### Alternative methods to convert MAPI to MIME
+
+To parse ``msg``files  without Outlook we could look into [libgsf](https://github.com/GNOME/libgsf) or [COM](https://msdn.microsoft.com/en-us/library/aa380369%28VS.85%29.aspx) based on the specification of 
+[Outlook Item File Format](https://msdn.microsoft.com/en-us/library/cc463912%28v=exchg.80%29.aspx?f=255&MSPPError=-2147217396).
+
+
 
 ### VBA to export selected messages
 
