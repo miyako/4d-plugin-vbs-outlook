@@ -23,7 +23,7 @@ reg copy HKLM\SOFTWARE\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Cla
 
 #### In short
 
-Since Office 2013/2016, the ``IConverterSession`` interface is no longer exposed to COM. One can no longer use it to convert ``msg`` to ``eml``, without editing the registry.
+Since Office 2013/2016, the ``IConverterSession`` interface is no longer exposed to COM. One can no longer use it to convert ``msg`` to ``eml``, without editing the registry. Once contents are retrieved from the structured file, RTF needs to be converted to HTML.
 
 #### Alternative methods to convert MAPI to MIME
 
