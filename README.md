@@ -90,7 +90,7 @@ End If
 
 #### Get the list of messages dropped from Outlook in 4D
 
-The clipboard data type [``CFSTR_FILEDESCRIPTORW``](https://msdn.microsoft.com/en-us/library/windows/desktop/bb776902(v=vs.85).aspx) (``FileGroupDescriptorW``) are available during the On Drop form event (or the first attempt at On Drag Over) in 4D.
+The clipboard data type [``CFSTR_FILEDESCRIPTORW``](https://msdn.microsoft.com/en-us/library/windows/desktop/bb776902(v=vs.85).aspx) (``FileGroupDescriptorW``) is available during the ``On Drop`` form event or the first ``On Drag Over`` event in 4D.
 
 Its structure is known ([``FILEGROUPDESCRIPTOR``](https://msdn.microsoft.com/en-us/library/windows/desktop/bb773290(v=vs.85).aspx), [``FILEDESCRIPTOR``](https://msdn.microsoft.com/en-us/library/windows/desktop/bb773288(v=vs.85).aspx)) so we can parse it with regular 4D commands. 
 
