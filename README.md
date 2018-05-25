@@ -87,3 +87,108 @@ If Err.Number = 0 Then
 
 End If
 ```
+
+#### Get the list of messages dropped from Outlook in 4D
+
+The clipboard data type [``CFSTR_FILEDESCRIPTORW``](https://msdn.microsoft.com/en-us/library/windows/desktop/bb776902(v=vs.85).aspx) (``FileGroupDescriptorW``) are available during the On Drop form event (or the first attempt at On Drag Over) in 4D.
+
+Its structure is known ([``FILEGROUPDESCRIPTOR``](https://msdn.microsoft.com/en-us/library/windows/desktop/bb773290(v=vs.85).aspx), [``FILEDESCRIPTOR``](https://msdn.microsoft.com/en-us/library/windows/desktop/bb773288(v=vs.85).aspx)) so we can parse it with regular 4D commands. 
+
+```
+C_BLOB($1)
+C_OBJECT($0;$FileGroupDescriptor)
+
+If (Count parameters#0)
+	
+	$sizeof_INPUT:=BLOB size($1)
+	
+	$sizeof_UINT:=4
+	$sizeof_DWORD:=8
+	$sizeof_CLSID:=16
+	$sizeof_FILETIME:=8  //DWORD*2
+	$sizeof_SIZEL:=8  //LONG*2
+	$sizeof_POINTL:=8  //LONG*2
+	$sizeof_TCHAR_MAX_PATH:=520  //260*sizeof(wchar_t)
+	
+	  //size test #1
+	If (($sizeof_INPUT%592)=$sizeof_UINT)
+		
+		C_LONGINT($pos)
+		ARRAY OBJECT($FileDescriptors;0)
+		
+		  //UINT           cItems;
+		$cItems:=BLOB to longint($1;PC byte ordering;$pos)
+		$sizeof_fgd:=($cItems+1)*592
+		
+		  //size test #2
+		If (($sizeof_INPUT-$pos)=$sizeof_fgd)
+			
+			C_BLOB($clsid)
+			C_BLOB($sizel;$pointl)
+			C_BLOB($ftCreationTime;$ftLastAccessTime;$ftLastWriteTime)
+			C_BLOB($fileName)
+			
+			For ($i;1;$cItems)
+				
+				  //DWORD    dwFlags;
+				$dwFlags:=BLOB to longint($1;PC byte ordering;$pos)
+				
+				  //CLSID    clsid;
+				COPY BLOB($1;$clsid;$pos;0;$sizeof_CLSID)
+				$pos:=$pos+$sizeof_CLSID
+				
+				  //SIZEL    sizel;
+				COPY BLOB($1;$sizel;$pos;0;$sizeof_SIZEL)
+				$pos:=$pos+$sizeof_SIZEL
+				
+				  //POINTL   pointl;
+				COPY BLOB($1;$pointl;$pos;0;$sizeof_POINTL)
+				$pos:=$pos+$sizeof_POINTL
+				
+				  //DWORD    dwFileAttributes;
+				$dwFileAttributes:=BLOB to longint($1;PC byte ordering;$pos)
+				
+				  //FILETIME ftCreationTime;
+				COPY BLOB($1;$ftCreationTime;$pos;0;$sizeof_FILETIME)
+				$pos:=$pos+$sizeof_FILETIME
+				
+				  //FILETIME ftLastAccessTime;
+				COPY BLOB($1;$ftLastAccessTime;$pos;0;$sizeof_FILETIME)
+				$pos:=$pos+$sizeof_FILETIME
+				
+				  //FILETIME ftLastWriteTime;
+				COPY BLOB($1;$ftLastWriteTime;$pos;0;$sizeof_FILETIME)
+				$pos:=$pos+$sizeof_FILETIME
+				
+				  //DWORD    nFileSizeHigh;
+				$nFileSizeHigh:=BLOB to longint($1;PC byte ordering;$pos)
+				
+				  //DWORD    nFileSizeLow;
+				$nFileSizeLow:=BLOB to longint($1;PC byte ordering;$pos)
+				
+				  //TCHAR    cFileName[MAX_PATH];
+				COPY BLOB($1;$fileName;$pos;0;$sizeof_TCHAR_MAX_PATH)
+				  //trim at wcslen (null bytes survive in object)
+				$cFileName:=Convert to text($fileName;"utf-16le")
+				$cFileName:=Substring($cFileName;1;Position(Char(0);$cFileName;*)-1)
+				
+				$pos:=$pos+$sizeof_TCHAR_MAX_PATH
+				
+				C_OBJECT($fgd)
+				
+				OB SET($fgd;"cFileName";$cFileName)
+				APPEND TO ARRAY($FileDescriptors;$fgd)
+				CLEAR VARIABLE($fgd)
+				
+			End for 
+			
+		End if 
+		
+		OB SET($FileGroupDescriptor;"cItems";$cItems)
+		OB SET ARRAY($FileGroupDescriptor;"fgt";$FileDescriptors)
+		
+	End if 
+End if 
+
+$0:=$FileGroupDescriptor
+```
